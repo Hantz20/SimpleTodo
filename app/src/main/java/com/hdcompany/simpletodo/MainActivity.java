@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     ListView lvItems ;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
        // items = new ArrayList<>();
         readItems();
         itemAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+
         lvItems =  (ListView) findViewById(R.id.lvitems);
+        lvItems.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         lvItems.setAdapter(itemAdapter);
         // mock data
         //items.add("First item");
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             itemAdapter.add(itemText);
             etNewItem.setText("");
+
             writeItems();
             Toast.makeText(getApplicationContext(),"Tachee Ajoutée avec succes",Toast.LENGTH_SHORT).show();
         }
